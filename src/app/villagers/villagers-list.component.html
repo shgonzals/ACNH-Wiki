@@ -1,0 +1,61 @@
+
+
+<div class="mat-elevation-z8">
+
+    <!--FILTER-->
+    <mat-form-field appearance="standard" class="filter">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort>
+        
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" (click)="openDetail(row)"></tr>
+
+        <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef> Villager </th>
+            <td mat-cell *matCellDef="let emp"> <img style="width: 50px;" [src]="emp.icon_uri" /> </td>
+        </ng-container>
+        
+        
+        <!--FIRSTNAME-->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let emp"> {{emp.name}} </td>
+        </ng-container>
+
+        <!--LASTNAME-->
+        <ng-container matColumnDef="personality">
+            <th mat-header-cell *matHeaderCellDef> Personality </th>
+            <td mat-cell *matCellDef="let emp"> {{emp.personality}} </td>
+        </ng-container>
+
+        <!--PRACTICE-->
+        <ng-container matColumnDef="birthday">
+            <th mat-header-cell *matHeaderCellDef> Birthday </th>
+            <td mat-cell *matCellDef="let emp"> {{emp.birthday}} </td>
+        </ng-container>
+
+        <!--SAGA-->
+        <ng-container matColumnDef="species">
+            <th mat-header-cell *matHeaderCellDef> Species </th>
+            <td mat-cell *matCellDef="let emp"> {{emp.species | uppercase}} </td>
+        </ng-container>
+
+        <!--GRADE-->    
+        <ng-container matColumnDef="gender">
+            <th mat-header-cell *matHeaderCellDef > Gender </th>
+            <td mat-cell *matCellDef="let emp"> {{emp.gender}} </td>
+        </ng-container>
+
+     
+    </table>
+
+    <!--PAGINATION -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons 
+                    aria-label="Select page">
+    </mat-paginator>
+    
+</div>

@@ -1,0 +1,27 @@
+.footer{
+    position: fixed;
+    bottom: 0;
+    background-color: #f3b800;
+}
+
+span{ 
+    color:white;
+}
+
+.footer-text{
+    color: white;
+    font-size: 10px;
+    text-align: end;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+}
+
+
+.footer-text p{
+    margin: 10px;
+    color: white;
+}
