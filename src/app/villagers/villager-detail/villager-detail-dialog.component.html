@@ -1,105 +1,37 @@
-<h2 mat-dialog-title>Detalle del villager:</h2>
+<h2 mat-dialog-title> <img style="width: 30px;margin-bottom: -9px;" [src]="data.icon_uri" /> {{data.name}}</h2>
 
 
-<mat-dialog-content>
-  <p class="form">
-    <mat-form-field appearance="standard">
-      <mat-label>Email</mat-label>
-      <input matInput placeholder="Email" [readonly]="true">
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>Ciudad de trabajo</mat-label>
-      <input matInput placeholder="Ciudad de trabajo" [readonly]="true">
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>Ubicación de trabajo</mat-label>
-      <input matInput placeholder="Ubicación de trabajo"  [readonly]="true">
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>Responsable área</mat-label>
-      <input matInput placeholder="Responsable área"  [readonly]="true">
-    </mat-form-field>
-  </p>
-  <p class="form">
-  
-    <mat-form-field appearance="standard">
-      <mat-label>Antigüedad</mat-label>
-      <input matInput placeholder="Antigüedad"  [readonly]="true">
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Fecha prevista salida</mat-label>
-      <input matInput [matDatepicker]="picker" [readonly]="true">
-      <mat-datepicker-toggle matSuffix [for]="picker" disabled></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Fecha de última actualización</mat-label>
-      <input matInput [matDatepicker]="picker2"  [readonly]="true">
-      <mat-datepicker-toggle matSuffix [for]="picker2" disabled></mat-datepicker-toggle>
-      <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
 
-  </p>
-    <!-- TABLA-->
-    
-    <h3>Proyectos del villager</h3>
-    <div class="mat-elevation-z8">
+<mat-dialog-content style="display: flex;">
   
-      <table mat-table [dataSource]="dataSource" matSort>
-          
-          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-          <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-  
-          <!--STATUS-->
-          <ng-container matColumnDef="cod">
-              <th mat-header-cell *matHeaderCellDef > Nombre </th>
-              <td mat-cell *matCellDef="let emp"> {{emp.name}} </td>
-          </ng-container>
-  
-          <!--FIRSTNAME-->
-          <ng-container matColumnDef="division">
-              <th mat-header-cell *matHeaderCellDef > Personality </th>
-              <td mat-cell *matCellDef="let emp"> {{emp.personality}} </td>
-          </ng-container>
-  
-          <!--LASTNAME-->
-          <ng-container matColumnDef="leader">
-              <th mat-header-cell *matHeaderCellDef> Responsable </th>
-              <td mat-cell *matCellDef="let emp"> {{emp.leader}} </td>
-          </ng-container>
-  
-          <!--PRACTICE-->
-          <ng-container matColumnDef="work">
-              <th mat-header-cell *matHeaderCellDef> Dedicación </th>
-              <td mat-cell *matCellDef="let emp"> {{emp.work / 100 | percent }} </td>
-          </ng-container>
-  
-          <!--SAGA-->
-          <ng-container matColumnDef="rol">
-              <th mat-header-cell *matHeaderCellDef> Rol</th>
-              <td mat-cell *matCellDef="let emp"> {{emp.rol}} </td>
-          </ng-container>
-  
-          <!--GRADE-->    
-          <ng-container matColumnDef="bill">
-              <th mat-header-cell *matHeaderCellDef > Tarifa de facturación  </th>
-              <td mat-cell *matCellDef="let emp"> {{emp.bill}} </td>
-          </ng-container>
-  
-          <!--WORK-->
-          <ng-container matColumnDef="createdAt">
-              <th mat-header-cell *matHeaderCellDef> Fecha de inicio</th>
-              <td mat-cell *matCellDef="let emp"> {{emp.createdAt | date:'mediumDate'}} </td>
-          </ng-container>
-  
-      </table>
 
-    </div>
-    <!-- FIN TABLA-->
- 
+    <span>
+      <img  style="width: 140px;border-radius: 50%;" [src]="data.image_uri" />
 
+    </span>
+
+    <span>
+      <mat-form-field appearance="standard" style="width: 100px;" >
+        <mat-label>Birthday</mat-label>
+        <input matInput placeholder="Birthday" [value]="data.birthday" [readonly]="true">
+      </mat-form-field>
+      <mat-form-field appearance="standard" style="width: 100px;">
+        <mat-label>Hobby</mat-label>
+        <input matInput placeholder="Hobby" [value]="data.hobby"  [readonly]="true">
+      </mat-form-field>
+      <mat-form-field appearance="standard" style="width: 100px;">
+      <mat-label>Personality</mat-label>
+        <input matInput placeholder="Personality" [value]="data.personality" [readonly]="true">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="standard" style="width: 380px;">
+        <mat-label>Saying</mat-label>
+        <input matInput placeholder="Saying" [value]="data.saying" [readonly]="true">
+      </mat-form-field>
+
+    </span>
+   
 
 </mat-dialog-content>
 
@@ -107,13 +39,5 @@
 
 <mat-dialog-actions align="end">
  <!--<button mat-button mat-dialog-close>Cancel</button>-->
-  <button mat-raised-button [mat-dialog-close]="true" (click)="onDelete()" color="primary" >
-    <mat-icon>delete</mat-icon>
-    Eliminar
-  </button>
-  <button mat-raised-button [mat-dialog-close]="true" [routerLink]="['/villagers', data.id]" color="primary" >
-    <mat-icon>edit</mat-icon>
-    Editar
-  </button>
-  <button mat-raised-button [mat-dialog-close]="true" color="primary" >Aceptar</button>
+  <button mat-raised-button [mat-dialog-close]="true" style="background: #f3b800;color: white;" >OK</button>
 </mat-dialog-actions>

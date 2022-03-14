@@ -49,7 +49,7 @@ export class VillagersListComponent implements OnInit, OnDestroy{
     openDetail(row: any){
         const dialogRef = this.dialog.open(VillagerDetailDialog,{
             data: row,
-            height: '550px'
+            height: '350px'
         });
         dialogRef.afterClosed().subscribe();
     }

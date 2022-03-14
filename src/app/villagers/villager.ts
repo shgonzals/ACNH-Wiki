@@ -7,4 +7,7 @@ export interface Villager{
     gender: string;
     icon_uri: string;
     image_uri: string;
+    hobby: string;
+    birthdayString: string;
+    saying: string;
 }
