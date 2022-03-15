@@ -6,7 +6,7 @@
 * [Versions](#versions)
 
 ## General info
-This project is a simple Animal Crossing Wiki.
+This project is a simple Animal Crossing Wiki for practice with Angular. Using data from [ACNH API](https://github.com/alexislours/ACNHAPI).
 
 ## Technologies
 Project is created with:
