@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Proyecto } from "../proyecto";
 import { Villager } from "../villager";
 import { MatTableDataSource } from '@angular/material/table';
 import { VillagersService } from "../villagers.service";
@@ -40,12 +39,9 @@ import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
       updatedAt: new FormControl('', Validators.required)
     });
 
-    dataSource = new MatTableDataSource<Proyecto>();
     columnsToDisplay = ['select','cod','division', 'leader', 'work'];
-    selection = new SelectionModel<Proyecto>(true, []);
 
     sub!: Subscription;
-    proyectos: Proyecto[] = [];
     id! : string | null;
     
     
@@ -101,30 +97,8 @@ import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
     this.sub.unsubscribe();
   }
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    if (this.isAllSelected()) {
-      this.selection.clear();
-      return;
-    }
-
-    this.selection.select(...this.dataSource.data);
-  }
-
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Proyecto): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.cod}`;
-  }
+ 
 
   onSave() : any{
     const config = new MatSnackBarConfig();
@@ -149,7 +123,6 @@ import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
 

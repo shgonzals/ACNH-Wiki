@@ -2,37 +2,41 @@ import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { Villager } from './villager';
-import { VillagersService } from './villagers.service';
+import { Bug } from './bug';
+import { BugsService } from './bugs.service';
 import { MatSort } from '@angular/material/sort';
-import { VillagerDetailDialog } from './villager-detail/villager-detail-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-villagers-list',
-  templateUrl: './villagers-list.component.html',
-  styleUrls: ['./villagers-list.component.scss']
+  selector: 'app-bugs-list',
+  templateUrl: './bugs-list.component.html',
+  styleUrls: ['./bugs-list.component.scss']
 })
-export class VillagersListComponent implements OnInit, OnDestroy{
+export class BugsListComponent implements OnInit, OnDestroy{
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
 
-    columnsToDisplay = ['image', 'name','personality', 'birthday', 'species', 'gender'];
-    dataSource = new MatTableDataSource<Villager>();
+    columnsToDisplay = ['image', 'name', 'price','rarity', 'time', 'catchPhrase'];
+    dataSource = new MatTableDataSource<Bug>();
 
     sub!: Subscription;
-    villagers: Villager[] = [];
+    bugs: Bug[] = [];
 
-    constructor(private villagersService: VillagersService, public dialog: MatDialog){}
+    constructor(private bugsService: BugsService, public dialog: MatDialog){}
 
     ngOnInit(): void {
-        this.sub = this.villagersService.getVillagers().subscribe({
-            next: villagers => {
-                for (var [key, value] of Object.entries(villagers)) {
+        this.sub = this.bugsService.getBugs().subscribe({
+            next: bugs => {
+                for (var [key, value] of Object.entries(bugs)) {
+                    debugger;
                     value.name =  value.name['name-EUen'];
-                    this.villagers.push(value);
-                }  
-                this.dataSource.data = this.villagers;
+                    value.time = value["availability"].time;
+                    value.rarity = value["availability"].rarity;
+                    value.museumPhrase = value["museum-phrase"];
+                    value.catchPhrase = value["catch-phrase"];
+                    this.bugs.push(value);
+                }
+                this.dataSource.data = this.bugs;
                 this.dataSource.paginator = this.paginator;
                 this.dataSource.sort = this.sort;
             },
@@ -46,11 +50,13 @@ export class VillagersListComponent implements OnInit, OnDestroy{
     }
 
     openDetail(row: any){
+        /*
         const dialogRef = this.dialog.open(VillagerDetailDialog,{
             data: row,
             height: '350px'
         });
         dialogRef.afterClosed().subscribe();
+        */
     }
 
     ngOnDestroy(): void {

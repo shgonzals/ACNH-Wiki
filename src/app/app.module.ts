@@ -26,6 +26,7 @@ import { StatusPipe } from './shared/status.pipe';
 import { VillagerDetailDialog } from './villagers/villager-detail/villager-detail-dialog.component';
 import { VillagerFormComponent } from './villagers/villager-form/villager-form.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BugsListComponent } from './bugs/bugs-list.component';
 
 
 
@@ -38,7 +39,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     StatusPipe,
     WelcomeComponent,
     VillagerDetailDialog,
-    VillagerFormComponent
+    VillagerFormComponent,
+    BugsListComponent
   ],
   imports: [
     BrowserModule,

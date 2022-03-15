@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './home/welcome.component';
 import { VillagersListComponent } from './villagers/villagers-list.component';
 import { VillagerFormComponent } from './villagers/villager-form/villager-form.component';
+import { BugsListComponent } from './bugs/bugs-list.component';
 
 const routes: Routes = [
     { path: 'villagers', component: VillagersListComponent},
     { path: 'villagers/:id', component: VillagerFormComponent},
     { path: 'villager', component: VillagerFormComponent},
+    { path: 'bugs', component: BugsListComponent},
     { path: 'welcome', component: WelcomeComponent},
     { path: '', redirectTo: 'welcome', pathMatch : 'full'},
     { path: '**', redirectTo: 'welcome', pathMatch : 'full'}

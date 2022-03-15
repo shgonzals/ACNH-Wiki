@@ -3,26 +3,26 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Villager } from "./villager";
+import { Bug } from "./bug";
 
 @Injectable({
     providedIn: 'root'
 })
-export class VillagersService{
+export class BugsService{
 
-    private GET_USERS_URL = 'http://acnhapi.com/v1/villagers/';
-    private USER_URL = 'http://acnhapi.com/v1/villagers/:id';
+    private GET_USERS_URL = 'http://acnhapi.com/v1/bugs/';
+    private USER_URL = 'http://acnhapi.com/v1/bugs/:id';
 
     constructor(private http: HttpClient) {}
 
-    getVillager(id: string): Observable<Villager> {
-        return this.http.get<Villager>(this.USER_URL).pipe(
+    getBug(id: string): Observable<Bug> {
+        return this.http.get<Bug>(this.USER_URL).pipe(
             catchError(this.handleError)
         );
     }
 
-    getVillagers(): Observable<Villager[]> {
-        return this.http.get<Villager[]>(this.GET_USERS_URL).pipe(
+    getBugs(): Observable<Bug[]> {
+        return this.http.get<Bug[]>(this.GET_USERS_URL).pipe(
             catchError(this.handleError)
         );
     }

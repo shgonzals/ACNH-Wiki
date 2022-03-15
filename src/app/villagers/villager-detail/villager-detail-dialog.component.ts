@@ -3,7 +3,6 @@ import { Component, Inject } from '@angular/core';
 import { Villager } from '../villager';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Proyecto } from '../proyecto';
 import { DateAdapter } from '@angular/material/core';
 import { VillagersService } from '../villagers.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
