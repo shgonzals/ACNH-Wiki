@@ -15,6 +15,9 @@ Project is created with:
 * NPM: 8.3.1
 
 ## Versions
+### v0.0.2
+ * Added Bugs list with filter and pagination.
+
 ### v0.0.1
 Initial version:
  * Home page
